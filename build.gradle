@@ -1,0 +1,31 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'maven'
+
+repositories {
+    //jcenter()
+    
+    maven {
+        url "https://repository.cloudera.com/artifactory/cloudera-repos/"
+    }
+     mavenCentral()
+   
+}
+
+
+dependencies {
+    compile 'org.apache.hadoop:hadoop-client:2.6.0-mr1-cdh5.6.0'
+    
+   
+
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Jar File Example',
+                    //'Main-Class': 'com.cardinalhealth.hadooplearning.runner.PageVisitRecordRunner'
+                'Main-Class': 'com.cardinalhealth.hadooplearning.runner.PageVisitRecordRunner'
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
