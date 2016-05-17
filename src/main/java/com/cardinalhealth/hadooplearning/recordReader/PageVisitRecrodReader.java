@@ -15,6 +15,8 @@ import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 import org.apache.hadoop.util.LineReader;
 import org.apache.log4j.Logger;
 
+import com.cardinalhealth.hadooplearning.util.Record;
+
 public class PageVisitRecrodReader extends RecordReader<LongWritable, Text>{
 	public static Logger logger = Logger.getLogger("com.cardinalhealth.hadooplearning.appLogger");
     private Integer maxLengthRecord;
@@ -45,17 +47,6 @@ public class PageVisitRecrodReader extends RecordReader<LongWritable, Text>{
         if (start != 0){
         	fileIn.seek(start);
         }
-/*  
-        boolean skipFirstLine = false;
-        if (start != 0){
-            skipFirstLine = true;
-            --start;
-            fileIn.seek(start);
-        }
-      if(skipFirstLine){
-      start += in.readLine(new Text(),0,(int)Math.min((long)Integer.MAX_VALUE, end - start));
-  }
-*/        
     }
 
     @Override
@@ -74,6 +65,13 @@ public class PageVisitRecrodReader extends RecordReader<LongWritable, Text>{
         		prevRecord = lineContent;
         	}
             lineContent = readALine();
+        	if(!isRecordValid(lineContent)){
+        		lineContent = new Text("Invalid record sent " + lineContent.toString());
+        		appendLineToRecordSet(lineContent);
+        		lineContent=null;
+        		continue;
+        	}
+          
             if( isItEndOfTheRecordGroup(lineContent)){
             	firstRecordOfNextBatch = lineContent;
                 break;
@@ -84,7 +82,16 @@ public class PageVisitRecrodReader extends RecordReader<LongWritable, Text>{
         return true;
     }
     
-    private boolean isEndOfBlock(){
+    private boolean isRecordValid(Text lineContent) {
+    	try{
+    		new Record(lineContent.toString());
+    	}catch(Exception e){
+    		return false;
+    	}
+    	return true;
+	}
+
+	private boolean isEndOfBlock(){
     	return pos >= end;
     }
 	private boolean isItEndOfTheRecordGroup(Text lineContent) {
@@ -96,7 +103,10 @@ public class PageVisitRecrodReader extends RecordReader<LongWritable, Text>{
 	}
     public Text readALine() throws IOException {
         Text line = new Text();
-        int newSize = in.readLine(line, maxLengthRecord,Math.max((int)Math.min(Integer.MAX_VALUE, end-pos),maxLengthRecord));
+        int newSize = in.readLine(line, maxLengthRecord,  Math.max((int)Math.min(Integer.MAX_VALUE, end-pos),
+        		 													maxLengthRecord
+        		 												  )
+        		 				 );
         pos += newSize;
         return line;
     }
@@ -106,24 +116,15 @@ public class PageVisitRecrodReader extends RecordReader<LongWritable, Text>{
         value.append(EOL.getBytes(),0, EOL.getLength());
     }
     private boolean isEndOfCurrentSession(String row){
-    	return prevRecord!=null && !getUserSessionId(row).equalsIgnoreCase(getUserSessionId(prevRecord.toString()));
+    	if(prevRecord == null ) return false;
+    	Record record = null , prevRec = null;
+		record = new Record(row);
+		prevRec = new Record(prevRecord.toString());
+    	return !record.getUserSessionId().equalsIgnoreCase(prevRec.getUserSessionId());
     }
     private boolean isUserBackToQueue(String row){
-    	return getUrlFromTheRow(row).endsWith("queue");
-    }
-    private String getUserSessionId(String row){
-        String[] fields = row.split(",");
-        if(fields.length>=1){
-            return fields[0];
-        }
-        return null;
-    }
-    private String getUrlFromTheRow(String row){
-        String[] fields = row.split(",");
-        if(fields.length>=5){
-            return fields[4];
-        }
-        return null;
+    	Record record = new Record(row);
+    	return record.getUrl().getCompleteUrl().endsWith("queue") || record.getUrl().getCompleteUrl().endsWith("RxeView/");
     }
     private void initializeKeyValue() {
         if(key == null) { key = new LongWritable();}

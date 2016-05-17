@@ -41,26 +41,41 @@ public class WordCount {
         }
     }
 
-    public static void main(String[] args) throws Exception {
-        Configuration conf = new Configuration();
+//    public static void main(String[] args) throws Exception {
+//        Configuration conf = new Configuration();
+//
+//        Job job = new Job(conf, "wordcount");
+//
+//        job.setOutputKeyClass(Text.class);
+//        job.setOutputValueClass(IntWritable.class);
+//
+//        job.setMapperClass(Map.class);
+//        job.setReducerClass(Reduce.class);
+//
+//        job.setInputFormatClass(TextInputFormat.class);
+//        job.setOutputFormatClass(TextOutputFormat.class);
+//
+//        job.setJarByClass(WordCount.class);
+//
+//        FileInputFormat.addInputPath(job, new Path(args[0]));
+//        FileOutputFormat.setOutputPath(job, new Path(args[1]));
+//
+//        job.waitForCompletion(true);
+//    }
+    
+    
+    public static void main(String[] args){
+    	String string1 = "RxeView-search-RxeView/ordering/orderSheet-search-search-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-search-RxeView/ordering/orderSheet-search-RxeView/ordering/orderSheet-search-RxeView/ordering/orderSheet-search-RxeView/ordering/orderSheet-search-RxeView/ordering/orderSheet";
+    					  
+	
+    	System.out.println(string1.replaceAll("(.+)\\1{4,}", "$1"));
+//    	String source = "HEY HEY duuuuuuude what'''s up? Trololololo yeye .0.0.0";
+//
+//    	System.out.println(source.replaceAll("(.+?)\\1+", "$1"));
+    	
+    	String string2 = "RxeView-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet";
+    	String string3 = "RxeView-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet-RxeView/ordering/orderSheet";
 
-        Job job = new Job(conf, "wordcount");
-
-        job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(IntWritable.class);
-
-        job.setMapperClass(Map.class);
-        job.setReducerClass(Reduce.class);
-
-        job.setInputFormatClass(TextInputFormat.class);
-        job.setOutputFormatClass(TextOutputFormat.class);
-
-        job.setJarByClass(WordCount.class);
-
-        FileInputFormat.addInputPath(job, new Path(args[0]));
-        FileOutputFormat.setOutputPath(job, new Path(args[1]));
-
-        job.waitForCompletion(true);
     }
 
 }

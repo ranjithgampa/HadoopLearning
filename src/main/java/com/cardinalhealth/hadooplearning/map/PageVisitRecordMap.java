@@ -7,73 +7,47 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.log4j.Logger;
 
+import com.cardinalhealth.hadooplearning.util.Record;
+
 import java.io.IOException;
 
-public class PageVisitRecordMap extends
-		Mapper<LongWritable, Text, Text, IntWritable> {
-	private final static IntWritable one = new IntWritable(1);
-	private Text word = new Text();
+public class PageVisitRecordMap extends Mapper<LongWritable, Text, Text, IntWritable> {
 	public static Logger logger = Logger.getLogger("com.cardinalhealth.hadooplearning.appLogger");
 	
 	@Override
 	public void map(LongWritable key, Text value,Context context)
 			throws IOException, InterruptedException {
 		String content = value.toString();
-		String output = null;
-		for (String line : content.split("\n")) {
-			//System.out.println(line);
-			String screenName = getScreenName(line);
-			if(StringUtils.isEmpty(screenName)){
-				System.out.println(" Culprit records are");
-				System.out.println(content);
-				return;
+		String[] lines = content.split("\n");
+		String output = "";
+		for (String line : lines) {
+			if(isInvalidLine(line)){
+				dealWithInvalidLine(context, line);
+				continue;
 			}
-			if (output == null) {
+			Record record = new Record(line);
+			String screenName = record.getUrl().getScreenIdentity();
+			
+			if (StringUtils.isEmpty(screenName)) continue;
+			
+			if(StringUtils.isEmpty(output)){
 				output = screenName;
-			} else if (!StringUtils.isEmpty(screenName)) {
-				output = output + "-" + getScreenName(line);
+			}else{
+				output = output + "-" + screenName;
 			}
 		}
-		context.write(new Text(output), new IntWritable(1));
-		context.write(new Text(" No of lines to Map are"),new IntWritable(content.split("\n").length));
+		context.write(new Text(condenseOutput(output)), new IntWritable(1));
+		context.write(new Text(" No of lines to Map are"),new IntWritable(lines.length));
 	}
-
-	private String getScreenName(String line) {
-		String[] tokens = line.split(",");
-		if (tokens.length >= 5) {
-			String url = (line.split(","))[4];
-			return massageUrl(url);
-		} else {
-			return "";
-		}
+	private String condenseOutput(String output){
+		return output.replaceAll("(.+)\\1+", "$1").replaceAll("(.+)\\1+", "$1").replaceAll("(.+)\\1+", "$1").replaceAll("(.+)\\1+", "$1").replaceAll("(.+?)\\1+", "$1");
 	}
 	
-	public String removeQueryParameter(String url){
-		if(url.indexOf("?")!=-1){
-			return url.substring(0, url.indexOf("?")) ;
-		}else{
-			return url;
-		}
-	}
-	public String mssageVarianceUrl(String url){
-		if(url.contains("variance/")){
-			return url.substring(0, url.lastIndexOf('/'));
-		}
-		return url;
+	private void dealWithInvalidLine( Context context, String line) throws IOException, InterruptedException{
+		context.write(new Text(line), new IntWritable(1));
 	}
 	
-	public String getURLPortionAfterModuleName(String url){
-		if (url.indexOf("#!") != -1) {
-			return url.substring(url.indexOf("/",url.indexOf("#!"))+1);
-		} else {
-			return "";
-		}
-	}
-	
-	public String massageUrl(String url){
-		url = removeQueryParameter(url);
-		url = getURLPortionAfterModuleName(url);
-		url = mssageVarianceUrl(url);
-		return url;
+	private boolean isInvalidLine(String line){
+		return line.startsWith("Invalid record sent");
 	}
 }
