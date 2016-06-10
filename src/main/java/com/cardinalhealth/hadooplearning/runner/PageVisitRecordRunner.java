@@ -1,8 +1,8 @@
 package com.cardinalhealth.hadooplearning.runner;
 
-import com.cardinalhealth.hadooplearning.InputFormat.PageVisitInputFormat;
-import com.cardinalhealth.hadooplearning.map.PageVisitRecordMap;
-import com.cardinalhealth.hadooplearning.reduce.PageVisitRecordReducer;
+import com.cardinalhealth.hadooplearning.sunburstchart.InputFormat.PageVisitInputFormat;
+import com.cardinalhealth.hadooplearning.sunburstchart.map.PageVisitRecordMap;
+import com.cardinalhealth.hadooplearning.sunburstchart.reduce.PageVisitRecordReducer;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;

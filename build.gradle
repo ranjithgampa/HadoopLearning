@@ -3,28 +3,23 @@ apply plugin: 'idea'
 apply plugin: 'maven'
 
 repositories {
-    //jcenter()
-    
-    maven {
+     maven {
         url "https://repository.cloudera.com/artifactory/cloudera-repos/"
     }
      mavenCentral()
-   
 }
 
 
 dependencies {
-    compile 'org.apache.hadoop:hadoop-client:2.6.0-mr1-cdh5.6.0'
-    
-   
-
-}
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+    compile group: 'log4j', name: 'apache-log4j-extras', version: '1.2.17'
+    compile 'org.apache.hadoop:hadoop-client:2.6.0-cdh5.5.0' 
+ }
 
 jar {
     manifest {
         attributes 'Implementation-Title': 'Gradle Jar File Example',
-                    //'Main-Class': 'com.cardinalhealth.hadooplearning.runner.PageVisitRecordRunner'
-                'Main-Class': 'com.cardinalhealth.hadooplearning.runner.PageVisitRecordRunner'
+                   'Main-Class': 'com.cardinalhealth.hadooplearning.wordcount.WordCount'
     }
     baseName = project.name + '-all'
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
