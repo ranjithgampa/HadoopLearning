@@ -1,7 +1,10 @@
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'maven'
-
+allprojects {
+    sourceCompatibility = 1.6
+    targetCompatibility = 1.6
+}
 repositories {
      maven {
         url "https://repository.cloudera.com/artifactory/cloudera-repos/"
@@ -19,7 +22,7 @@ dependencies {
 jar {
     manifest {
         attributes 'Implementation-Title': 'Gradle Jar File Example',
-                   'Main-Class': 'WordCount'
+                   'Main-Class': 'com.learn.hadooplearning.wordcount.WordCount'
     }
     baseName = project.name + '-all'
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }

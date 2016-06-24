@@ -17,7 +17,7 @@ import org.apache.log4j.Logger;
 import java.io.IOException;
 
 public class WordCount extends Configured implements Tool {
-    public static Logger logger = Logger.getLogger("com.cardinalhealth.hadooplearning.appLogger");
+    public static Logger logger = Logger.getLogger("com.learn.hadooplearning.appLogger");
 
     public int run(String[] args) throws Exception {
         deletePrevOutput(args[1]);

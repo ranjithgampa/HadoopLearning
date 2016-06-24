@@ -16,7 +16,7 @@ import org.apache.log4j.Logger;
 
 public class PageVisitRecordRunner {
 
-	public static Logger logger = Logger.getLogger("com.cardinalhealth.hadooplearning.appLogger");
+	public static Logger logger = Logger.getLogger("com.learn.hadooplearning.appLogger");
     public static void main(String[] args) throws Exception {
     	logger.info("logger working");
         Configuration conf = new Configuration();

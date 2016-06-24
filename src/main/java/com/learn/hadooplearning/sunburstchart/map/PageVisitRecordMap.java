@@ -12,7 +12,7 @@ import com.learn.hadooplearning.sunburstchart.util.Record;
 import java.io.IOException;
 
 public class PageVisitRecordMap extends Mapper<LongWritable, Text, Text, IntWritable> {
-	public static Logger logger = Logger.getLogger("com.cardinalhealth.hadooplearning.appLogger");
+	public static Logger logger = Logger.getLogger("com.learn.hadooplearning.appLogger");
 	
 	@Override
 	public void map(LongWritable key, Text value,Context context)

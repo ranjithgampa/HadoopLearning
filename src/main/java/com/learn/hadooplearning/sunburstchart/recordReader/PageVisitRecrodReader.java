@@ -18,7 +18,7 @@ import org.apache.log4j.Logger;
 import com.learn.hadooplearning.sunburstchart.util.Record;
 
 public class PageVisitRecrodReader extends RecordReader<LongWritable, Text>{
-	public static Logger logger = Logger.getLogger("com.cardinalhealth.hadooplearning.appLogger");
+	public static Logger logger = Logger.getLogger("com.learn.hadooplearning.appLogger");
     private Integer maxLengthRecord;
     private LongWritable key = new LongWritable();
     Text value = new Text();
