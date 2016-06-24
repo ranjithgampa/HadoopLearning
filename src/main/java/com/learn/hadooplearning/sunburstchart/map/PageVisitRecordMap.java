@@ -1,4 +1,4 @@
-package com.cardinalhealth.hadooplearning.sunburstchart.map;
+package com.learn.hadooplearning.sunburstchart.map;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.io.IntWritable;
@@ -7,7 +7,7 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.log4j.Logger;
 
-import com.cardinalhealth.hadooplearning.sunburstchart.util.Record;
+import com.learn.hadooplearning.sunburstchart.util.Record;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package com.cardinalhealth.hadooplearning.sunburstchart.recordReader;
+package com.learn.hadooplearning.sunburstchart.recordReader;
 
 import java.io.IOException;
 
@@ -15,7 +15,7 @@ import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 import org.apache.hadoop.util.LineReader;
 import org.apache.log4j.Logger;
 
-import com.cardinalhealth.hadooplearning.sunburstchart.util.Record;
+import com.learn.hadooplearning.sunburstchart.util.Record;
 
 public class PageVisitRecrodReader extends RecordReader<LongWritable, Text>{
 	public static Logger logger = Logger.getLogger("com.cardinalhealth.hadooplearning.appLogger");

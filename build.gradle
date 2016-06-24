@@ -19,7 +19,7 @@ dependencies {
 jar {
     manifest {
         attributes 'Implementation-Title': 'Gradle Jar File Example',
-                   'Main-Class': 'com.cardinalhealth.hadooplearning.wordcount.WordCount'
+                   'Main-Class': 'WordCount'
     }
     baseName = project.name + '-all'
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }

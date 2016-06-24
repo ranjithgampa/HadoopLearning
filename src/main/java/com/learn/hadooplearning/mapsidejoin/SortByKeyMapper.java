@@ -1,4 +1,4 @@
-package com.cardinalhealth.hadooplearning.mapsidejoin;
+package com.learn.hadooplearning.mapsidejoin;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;

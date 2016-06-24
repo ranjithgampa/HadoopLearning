@@ -1,4 +1,4 @@
-package com.cardinalhealth.hadooplearning.mapsidejoin;
+package com.learn.hadooplearning.mapsidejoin;
 
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;

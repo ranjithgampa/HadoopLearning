@@ -1,4 +1,4 @@
-package com.cardinalhealth.hadooplearning.sunburstchart.util;
+package com.learn.hadooplearning.sunburstchart.util;
 
 public class Record {
 	private String[] recordSplit;

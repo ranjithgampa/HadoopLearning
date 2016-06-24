@@ -1,4 +1,4 @@
-package com.cardinalhealth.hadooplearning.sunburstchart.util;
+package com.learn.hadooplearning.sunburstchart.util;
 
 import org.apache.commons.lang.StringUtils;
 

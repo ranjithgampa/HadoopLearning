@@ -1,4 +1,4 @@
-package com.cardinalhealth.hadooplearning.mapsidejoin;
+package com.learn.hadooplearning.mapsidejoin;
 
 import com.google.common.collect.Lists;
 import org.apache.hadoop.conf.Configuration;

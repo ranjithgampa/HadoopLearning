@@ -1,4 +1,4 @@
-package com.cardinalhealth.hadooplearning.movieratings.reducesidejoin;
+package com.learn.hadooplearning.movieratings.reducesidejoin;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;

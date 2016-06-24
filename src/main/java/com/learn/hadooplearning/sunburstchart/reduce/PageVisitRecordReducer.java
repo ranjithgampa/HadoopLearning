@@ -1,4 +1,4 @@
-package com.cardinalhealth.hadooplearning.sunburstchart.reduce;
+package com.learn.hadooplearning.sunburstchart.reduce;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
